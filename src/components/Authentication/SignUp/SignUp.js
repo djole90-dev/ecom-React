@@ -29,7 +29,7 @@ class SignUp extends React.Component {
         try {
             const { user } = await auth.createUserWithEmailAndPassword(email, password)
             await createUserProfileDocument(user, {displayName})
-            this.resetState()
+            this.clearState()
         } catch (err) {
             console.log(err)
         }
@@ -39,7 +39,7 @@ class SignUp extends React.Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    resetState = () => {
+    clearState = () => {
         this.setState({
             displayName: '',
             email: '',
