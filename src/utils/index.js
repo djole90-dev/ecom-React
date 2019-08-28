@@ -16,6 +16,20 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
     return [...cartItems, { ...cartItemToAdd, quantity: 1 }]
 }
 
-export const removeItemFromCart = (cartItems, cartItemToReduce) => {
+export const rmvOneItemFromCart = (cartItems, itemToRemove, fn) => {
+    console.log(cartItems, typeof cartItems)
+    const itemToDecrease = cartItems.find(cartItem => cartItem.id === itemToRemove.id)
 
+    if (itemToDecrease.quantity === 1) {
+        return cartItems.filter(cartItem => cartItem.id !== itemToRemove.id)
+    }
+
+    return cartItems.map(cartItem => 
+        cartItem.id === itemToRemove.id
+        ?
+        {...cartItem, quantity: cartItem.quantity - 1}
+        :
+        cartItem
+    )
 }
+
