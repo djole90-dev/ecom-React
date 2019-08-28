@@ -1,7 +1,9 @@
-import { TOGGLE_CART_HIDDEN } from '../../actions/types'
+import { TOGGLE_CART_HIDDEN, ADD_ITEM } from '../../actions/types'
+import { addItemToCart } from '../../../utils'
 
 const initialState = {
-    hidden: true
+    hidden: true,
+    cartItems: []
 }
 
 const cartReducer = (state = initialState, action) => {
@@ -9,6 +11,11 @@ const cartReducer = (state = initialState, action) => {
         case TOGGLE_CART_HIDDEN:
             console.log('Jeboga')
             return {...state, hidden: !state.hidden}
+        case ADD_ITEM: 
+            return {
+                ...state, 
+                cartItems: addItemToCart(state.cartItems, action.payload)
+            }
         default:
             return state
     }
