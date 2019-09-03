@@ -41,3 +41,30 @@ export const selectCurrentUser = createSelector(
     user => user.currentUser
 )
 
+
+// === DIRECTORY AND SHOP SELECTORS === //
+
+const selectDirectory = state => state.directory
+
+export const selectCurrentDirectory = createSelector(
+    [selectDirectory],
+    directory => directory.sections
+)
+
+
+const selectShop = state => state.shop
+
+export const selectCurrentShop = createSelector( // should be selectCollections
+    [selectShop],
+    shop => shop.collections
+)
+
+export const selectCollectionPreview = createSelector(
+    [selectCurrentShop],
+    collections => Object.keys(collections).map(key => collections[key])
+)
+
+export const selectCollection = collectionUrlParam => createSelector(
+        [selectCurrentShop],
+        collections => collections[collectionUrlParam]
+)

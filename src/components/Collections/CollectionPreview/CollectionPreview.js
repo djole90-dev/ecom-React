@@ -1,6 +1,6 @@
 import React from 'react'
 import CollectionItem from '../CollectionItem/CollectionItem'
-import './CollectionPreview.styles.scss'
+import './collection-preview.scss'
 
 const CollectionPreview = ({title, items}) => (
     <div className="collection-preview">
