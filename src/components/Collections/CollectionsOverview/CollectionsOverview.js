@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { selectCollectionPreview } from '../../../redux/selectors'
+
 import CollectionPreview from '../CollectionPreview/CollectionPreview'
 import './collections-overview.scss'
 
